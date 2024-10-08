@@ -14,18 +14,15 @@ enum DataError: Error {
     case error(Error?)
 }
 
-typealias Handler<T> = (Result<T, DataError>) -> Void
-
 class APIManager {
     static let shared = APIManager()
     
     
     func request<T: Codable>(
         modelType: T.Type,
-        type: EndPointType,
-        completion: @escaping Handler<T>
-    ) {
-        guard let url = type.url else { return } 
+        type: EndPointType
+    ) async throws -> T {
+        guard let url = type.url else { throw DataError.invalidURL }
         
         var request = URLRequest(url: url)
         request.httpMethod = type.methods.rawValue
@@ -34,23 +31,18 @@ class APIManager {
         }
         request.allHTTPHeaderFields = type.headers
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(.failure(.invalidData))
-                return
-            }
-            guard let response = response as? HTTPURLResponse, 200 ... 299 ~= response.statusCode else {
-                completion(.failure(.invalidResponse))
-                return
+        do {
+            let (data , response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
+                throw DataError.invalidResponse
             }
             
-            do {
-                let product = try JSONDecoder().decode(modelType, from: data)
-                completion(.success(product ))
-            } catch {
-                completion(.failure(.error(error)))
-            }
-        } .resume()
+            let decodeData = try JSONDecoder().decode(modelType, from: data)
+            return decodeData
+        } catch {
+            throw DataError.error(error)
+        }
     }
     
     static var commonHeaders: [String: String] {

@@ -14,32 +14,28 @@ final class productViewModel {
     
     
     func fetchProducts() {
-        self.eventHandlet?(.loading)
-        APIManager.shared.request(
-            modelType: [Product].self,
-            type: EndPointsItem.product) { response in
+        Task {
+            self.eventHandlet?(.loading)
+            do {
+                let products = try await APIManager.shared.request(modelType: [Product].self, type: EndPointsItem.product)
+                self.products = products
                 self.eventHandlet?(.stoploading)
-                switch response {
-                case .success(let product):
-                    self.products = product
-                    self.eventHandlet?(.dataloaded)
-                case .failure(let error):
-                    self.eventHandlet?(.error(error))
-                }
+                self.eventHandlet?(.dataloaded)
+            } catch {
+                self.eventHandlet?(.error(error))
             }
+        }
     }
     
     func addProduct(parameters: AddProduct) {
-        APIManager.shared.request(
-            modelType: AddProduct.self,
-            type: EndPointsItem.addProduct(product: parameters)) { response in
-                switch response {
-                case .success(let product):
-                    self.eventHandlet?(.newProduct(product: product))
-                case .failure(let error):
-                    self.eventHandlet?(.error(error))
-                }
+        Task {
+            do {
+                let newProduct = try await APIManager.shared.request(modelType: AddProduct.self, type: EndPointsItem.addProduct(product: parameters))
+                self.eventHandlet?(.newProduct(product: newProduct))
+            } catch {
+                self.eventHandlet?(.error(error))
             }
+        }
     }
 }
 
