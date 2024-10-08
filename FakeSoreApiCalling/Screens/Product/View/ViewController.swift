@@ -17,6 +17,10 @@ class ViewController: UIViewController {
         self.setupTableView()
         self.configuration()
     }
+    @IBAction func addProduct(_ sender: Any) {
+        let product = AddProduct(title: "iPhone")
+        viewModel.addProduct(parameters: product)
+    }
 }
 
 extension ViewController {
@@ -52,6 +56,8 @@ extension ViewController {
                 }
             case .error(let error):
                 print(error)
+            case .newProduct(let product):
+                print(product)
             }
         }
     }

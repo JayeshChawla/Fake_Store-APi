@@ -19,6 +19,9 @@
 		238D75D02C929D9300DDF7A3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238D75CF2C929D9300DDF7A3 /* APIManager.swift */; };
 		238D75D32C92A7E500DDF7A3 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238D75D22C92A7E500DDF7A3 /* ProductTableViewCell.xib */; };
 		238D75D42C92A7E500DDF7A3 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238D75D12C92A7E500DDF7A3 /* ProductTableViewCell.swift */; };
+		23BD93962CB506F000656C6D /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD93952CB506F000656C6D /* EndPointType.swift */; };
+		23BD93982CB511DB00656C6D /* AddPRoductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD93972CB511DB00656C6D /* AddPRoductViewController.swift */; };
+		23BD939A2CB5123200656C6D /* AddProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BD93992CB5123200656C6D /* AddProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		238D75CF2C929D9300DDF7A3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		238D75D12C92A7E500DDF7A3 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		238D75D22C92A7E500DDF7A3 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
+		23BD93952CB506F000656C6D /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		23BD93972CB511DB00656C6D /* AddPRoductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPRoductViewController.swift; sourceTree = "<group>"; };
+		23BD93992CB5123200656C6D /* AddProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddProduct.swift; path = FakeSoreApiCalling/Screens/Product/View/AddProduct.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 				238D75C22C929A9600DDF7A3 /* Application */,
 				238D75C12C929A9200DDF7A3 /* Extenstion */,
 				238D75C02C929A9000DDF7A3 /* Constant */,
+				23BD93942CB506CE00656C6D /* Utliity */,
 				238D75BF2C929A8C00DDF7A3 /* Helper */,
 				238D75BE2C929A8A00DDF7A3 /* Screens */,
 				238D75BD2C929A8700DDF7A3 /* Storyboard */,
@@ -159,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				238D75CB2C929BA500DDF7A3 /* Product.swift */,
+				23BD93992CB5123200656C6D /* AddProduct.swift */,
 			);
 			name = Model;
 			path = "New Group/Model";
@@ -167,11 +175,20 @@
 		238D75C82C929B5700DDF7A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23BD93972CB511DB00656C6D /* AddPRoductViewController.swift */,
 				238D75AB2C929A7700DDF7A3 /* ViewController.swift */,
 				238D75D12C92A7E500DDF7A3 /* ProductTableViewCell.swift */,
 				238D75D22C92A7E500DDF7A3 /* ProductTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		23BD93942CB506CE00656C6D /* Utliity */ = {
+			isa = PBXGroup;
+			children = (
+				23BD93952CB506F000656C6D /* EndPointType.swift */,
+			);
+			path = Utliity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,10 +265,13 @@
 			files = (
 				238D75CA2C929B8800DDF7A3 /* ViewModel.swift in Sources */,
 				238D75D42C92A7E500DDF7A3 /* ProductTableViewCell.swift in Sources */,
+				23BD93962CB506F000656C6D /* EndPointType.swift in Sources */,
 				238D75AC2C929A7700DDF7A3 /* ViewController.swift in Sources */,
 				238D75CC2C929BA500DDF7A3 /* Product.swift in Sources */,
 				238D75A82C929A7700DDF7A3 /* AppDelegate.swift in Sources */,
+				23BD93982CB511DB00656C6D /* AddPRoductViewController.swift in Sources */,
 				238D75AA2C929A7700DDF7A3 /* SceneDelegate.swift in Sources */,
+				23BD939A2CB5123200656C6D /* AddProduct.swift in Sources */,
 				238D75CE2C929D2500DDF7A3 /* Constant.swift in Sources */,
 				238D75D02C929D9300DDF7A3 /* APIManager.swift in Sources */,
 			);
